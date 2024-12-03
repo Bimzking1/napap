@@ -13,8 +13,19 @@
         <div class="max-w-[1280px] mx-auto px-4 text-center text-2xl font-bold">
             Database Narapidana Kumham Jatim
         </div>
-        <div class="bg-blue-500 hover:bg-blue-600 duration-300 py-1 px-4 cursor-pointer absolute right-4 top-0 bottom-0 m-auto h-[40px] flex justify-center items-center rounded-lg text-white">
-            Login
+        <div class="flex gap-2 justify-center items-center absolute right-4 top-0 bottom-0 m-auto h-[40px]">
+            @if (Auth::check())
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="bg-red-500 hover:bg-red-600 duration-300 py-1 px-4 cursor-pointer flex justify-center items-center rounded-lg text-white">
+                        Logout
+                    </button>
+                </form>
+            @else
+                <a href='/login' class="bg-blue-500 hover:bg-blue-600 duration-300 py-1 px-4 cursor-pointer flex justify-center items-center rounded-lg text-white">
+                    Login
+                </a>
+            @endif
         </div>
     </div>
     <div class="w-full max-w-[1280px] mx-auto px-4">
